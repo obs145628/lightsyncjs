@@ -1,0 +1,16 @@
+{
+  "name": "lightsyncjs",
+  "version": "0.1.0",
+  "authors": [
+    "Steven Lariau <obs145628@gmail.com>"
+  ],
+  "description": "Javascript library for syncing data between localStorage and servers",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

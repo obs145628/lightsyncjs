@@ -1,0 +1,13 @@
+{
+  "name": "lightsyncjs",
+  "version": "0.1.0",
+  "description": "Javascript library for syncing data between localStorage and servers",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "steven6442",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
