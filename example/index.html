@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<title>Lightsyncjs tests</title>
+	<title>Lightsyncjs example</title>
 	
 	<script src="../bower_components/dropbox-js/lib/dropbox.min.js"></script>
 	<script src="../bower_components/gapi/index.js"></script>
-	
-	<script src="../src/ls.js"></script>
-	<script src="../src/http.js"></script>
-	<script src="../src/events.js"></script>
-	<script src="../src/utils.js"></script>
-	<script src="../src/dropboxwrapper.js"></script>
-	<script src="../src/googledrive.js"></script>
-	<script src="../src/lightserver.js"></script>
-	<script src="../src/filesremote.js"></script>
-	<script src="../src/collection.js"></script>
-	<script src="../src/lisy.js"></script>
-	
+	<script src="../dist/lightsyncjs.min.js"></script>
 	<script src="js/app.js"></script>
 	
   </head>
@@ -26,7 +15,9 @@
 	<div id="signin">
 	  <input type="button" id="dropbox" value="Sign in with Dropbox" />
 	  <input type="button" id="googledrive" value="Sign in with Google Drive" />
-	  <input type="button" id="lightserver" value="Sign in with LightServer" />
+	  <input type="button" id="lightserver" value="Sign in with LigthServer (Local)" />
+
+	  <div id="coerror">Unable to sign in : Connection error</div>
 	</div>
 
 	<div id="user">

@@ -1,65 +1,57 @@
-lisy.init({
-	_name: "tests",
+lightSync.init({
+	_name: "lightsyncjs-example",
 	"lightserver": {},
 	"dropbox": {
-		key: "npszzfbz3h7jpgw",
-		receiverUrl: "http://localhost:8080/tests/auth_receiver.html"
+		key: "gjexnb20idqkshp",
+		receiverUrl: "http://localhost:8080/example/auth_receiver.html"
 	},
 	"googledrive": {
-		client_id: "1070338777886-keta04k0adtp04s9269rktt6al294kpb.apps.googleusercontent.com"
+		client_id: "175501597543-sis50cnv45ma7bmbtl5cmu795cemsr4q.apps.googleusercontent.com"
 	}
 });
 
-
 var onSignin = function(err)
 {
+	document.getElementById("coerror").style.display = err ? "block" : "none";
+	
 	if(err)
-	{
-		console.log(err);
 		return;
-	}
 
 	document.getElementById("user").style.display = "block";
 	document.getElementById("signin").style.display = "none";
-	document.getElementById("userinfos").innerHTML = lisy.getUserInfos().name + " (" + lisy.getServerName() + ")";
+	document.getElementById("userinfos").innerHTML = lightSync.getUserInfos().name + " (" + lightSync.getServerName() + ")";
 	updateSyncTime();
 };
 
 var updateSyncTime = function()
 {
-	var syncTime = lisy.getLastSyncTime();
-	var message = syncTime === -1 ? "Never" : new Date(syncTime).toString();
-	document.getElementById("syncstate").innerHTML = "(Last sync: " + message + ")";
+	var syncTime = lightSync.getLastSyncTime();
+	var message;
+	if(lightSync.isSyncing())
+		message = "(Syncing ...)";
+	else
+		message = "(Last sync: " + (syncTime === -1 ? "Never" : new Date(syncTime).toString()) + ")";
+	document.getElementById("syncstate").innerHTML = message;
 };
 
-var notes = getCollection("notes-tests");
+var notes = lightSync.getCollection("example-notes");
 var items = notes.getItems();
 
 window.onload = function()
 {
 	
 	document.getElementById("sync").addEventListener("click", function(e) {
-		lisy.sync(function(err) {
+		lightSync.sync(function(err) {
 			if(err)
-			{
 				console.log(err);
-				return;
-			}
-
-			var keys = lisy.getKeys();
-			for(var i = 0; i < keys.length; ++i)
-			{
-				console.log(keys[i] + " => " + lisy.getItem(keys[i]));
-			}
-
-			console.log("synced");
 			updateSyncTime();
 		});
 		e.preventDefault();
+		updateSyncTime();
 	});
 
 	document.getElementById("signout").addEventListener("click", function(e) {
-		lisy.signout();
+		lightSync.signout();
 		document.getElementById("signin").style.display = "block";
 		document.getElementById("user").style.display = "none";
 		e.preventDefault();
@@ -67,7 +59,7 @@ window.onload = function()
 
 	(["dropbox", "googledrive", "lightserver"]).forEach(function(server) {
 		document.getElementById(server).addEventListener("click", function() {
-			lisy.connect(server, onSignin);
+			lightSync.connect(server, onSignin);
 		});	
 	});
 
@@ -115,11 +107,13 @@ window.onload = function()
 	printNotes();
 	
 	
-	var connected = lisy.isConfigured();
+	var connected = lightSync.isConfigured();
 
 	if(connected)
 		onSignin(null);
 	else
 		document.getElementById("user").style.display = "none";
+
+	document.getElementById("coerror").style.display = "none";
 	
 };
