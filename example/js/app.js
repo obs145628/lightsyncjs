@@ -6,7 +6,8 @@ lightSync.init({
 		receiverUrl: "http://localhost:8080/example/auth_receiver.html"
 	},
 	"googledrive": {
-		client_id: "175501597543-sis50cnv45ma7bmbtl5cmu795cemsr4q.apps.googleusercontent.com"
+		client_id: "175501597543-sis50cnv45ma7bmbtl5cmu795cemsr4q.apps.googleusercontent.com",
+		//client_secret: "..." only needed for cordova
 	}
 });
 

@@ -4,6 +4,7 @@ Lightsyncjs
 
 This is a browser-side JavasSript library for syncing data between the localStorage and Cloud Storage Services.
 For now, only Dropbox and Google Drive are supported. Although, the library can be extended for supporting other services.
+lightsyncjs also works in Cordova applications, with the plugin inappbrowser
 
 Installation and Usage
 ----

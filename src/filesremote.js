@@ -200,6 +200,6 @@ var filesRemote = {
 	
 };
 
-filesRemote.addServer("googledrive", googleDrive);
+filesRemote.addServer("googledrive", isCordova ? cdvGoogleDrive : googleDrive);
 filesRemote.addServer("dropbox", dropboxWrapper);
 filesRemote.addServer("lightserver", lightServer);

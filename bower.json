@@ -1,6 +1,6 @@
 {
   "name": "lightsyncjs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "authors": [
     "Steven Lariau <obs145628@gmail.com>"
   ],
@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "gapi": "https://apis.google.com/js/client.js",
-    "dropbox-js": "git://github.com/dropbox/dropbox-js.git#~0.10.3"
+    "dropbox-js": "git://github.com/dropbox/dropbox-js.git#~0.10.3",
+    "jquery": "~2.1.4"
   }
 }

@@ -1,12 +1,16 @@
 {
   "name": "lightsyncjs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Javascript library for syncing data between localStorage and Cloud Storage services (Dropbox, Google Drive)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Steven Lariau <obs145628@gmail.com>",
-  "license": "MIT",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/obs145628/lightsyncjs"
+	},
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",

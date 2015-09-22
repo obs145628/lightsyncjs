@@ -15,9 +15,14 @@ var dropboxWrapper = {
 	init: function(options)
 	{
 		dropboxClient = new Dropbox.Client(options);
-		dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({
-			receiverUrl: options.receiverUrl
-		}));
+		if(isCordova)
+			dropboxClient.authDriver(new Dropbox.AuthDriver.Cordova());
+		else
+		{
+			dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({
+                receiverUrl: options.receiverUrl
+            }));
+		}
 	},
 
 	getUserInfos: function(callback)

@@ -13,13 +13,15 @@ var clearStoredKey = function()
 	ls.remove("datadb_key");
 };
 
+var lightServerUrl = "/obsdbserver";
+
 var serverRequest = function(command, callback, options)
 {
 	if(typeof options === "undefined")
 		options = {};
 	options.command = command;
 	options.key = getStoredKey();
-	http.post("/obsdbserver", options, function(err, data) {
+	http.post(lightServerUrl, options, function(err, data) {
 		if(err)
 			callback(err);
 		else if(data.err)
@@ -35,7 +37,11 @@ var serverRequest = function(command, callback, options)
 
 var lightServer = {
 
-	init: function() {},
+	init: function(options)
+	{
+		if(options.url)
+			lightServerUrl = options.url;
+	},
 
 	signin: function(user, pass, callback)
 	{

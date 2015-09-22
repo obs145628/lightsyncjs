@@ -1,3 +1,8 @@
+document.addEventListener("deviceready", function() {
+	if(isCordova)
+		window.open = cordova.InAppBrowser.open;
+}, false);
+
 var keysInfos = ls.init("main._keys", {});
 var lastSync = ls.init("_last_sync", -1);
 
@@ -234,6 +239,10 @@ var lisy = {
 
 				var writeCallback = function()
 				{
+
+					keysInfos = serverKeys;
+					ls.set("main._keys", keysInfos);
+					
 					for(var file in fClientSet)
 					{
 						var keys = fClientSet[file];
@@ -262,8 +271,6 @@ var lisy = {
 						}
 					}
 
-					keysInfos = serverKeys;
-					ls.set("main._keys", keysInfos);
 					syncRunning = false;
 					var time = new Date().getTime();
 					ls.set("_last_sync", time);
@@ -444,6 +451,7 @@ var lisy = {
 };
 useEvents(lisy);
 
+lisy.gapiReady = gapiReady;
 lisy.filesRemote = filesRemote;
 lisy.connect = filesRemote.connect;
 lisy.getUserInfos = filesRemote.getUserInfos;

@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 					"src/utils.js",
 					"src/dropboxwrapper.js",
 					"src/googledrive.js",
+					"src/gapi-cordova.js",
 					"src/lightserver.js",
 					"src/filesremote.js",
 					"src/collection.js",

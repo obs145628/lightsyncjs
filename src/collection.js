@@ -149,9 +149,9 @@ var Collection = {
 		var id = getId();
 		var key = this._key + id;
 		item.id = id;
-		item.date = new Date(lisy.getModifiedTime(key));
 		this._items.push(item);
 		lisy.setItem(key, this._getDataClone(item));
+		item.date = new Date(lisy.getModifiedTime(key));
 		this.trigger("add", item);
 		this.trigger("change");
 	},
@@ -168,6 +168,7 @@ var Collection = {
 
 		var oldItem = lisy.getItem(this._key + item.id);
 		lisy.setItem(this._key + item.id, this._getDataClone(item));
+		item.date = new Date(lisy.getModifiedTime(this._key + item.id)); 
 		this.trigger("update_" + item.id, oldItem, item);
 		this.trigger("updateAny", oldItem, item);
 		this.trigger("change");

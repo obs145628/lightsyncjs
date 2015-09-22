@@ -2,24 +2,16 @@ var gClientId = null;
 var gFiles = {};
 var gEvents = [];
 
-var triggerGLoad = function(err)
+var gapiReady = function()
 {
 	for(var i = 0; i < gEvents.length; ++i)
-		gEvents[i](err);
+		gEvents[i]();
 };
-
-var gapiTest = setInterval(function() {
-	if(gapi.auth)
-	{
-		clearInterval(gapiTest);
-		triggerGLoad(null);
-	}
-}, 100);
 
 var onGapiLoad = function(callback)
 {
 	if(gapi.auth)
-		callback(null);
+		callback();
 	else
 		gEvents.push(callback);
 };
